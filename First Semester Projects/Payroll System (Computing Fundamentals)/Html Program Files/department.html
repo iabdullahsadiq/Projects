@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Payroll System - Department List</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+  
+  th {
+      background-color: #f2f2f2;
+    }
+    
+    form {
+      margin-top: 20px;
+      display: flex;
+        flex-direction: column;
+      }
+      
+    label {
+        margin-bottom: 10px;
+      }
+    
+    input[type="text"] {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+  
+  input[type="button"] {
+      padding: 12px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="home.html">Home</a>
+  <a href="attendance.html">Attendance</a>
+  <a href="payroll.html">Payroll List</a>
+  <a href="employee.html">Employee List</a>
+  <a href="department.html">Department List</a>
+  <a href="deduction.html">Deduction List</a>
+  <a href="login.html" onclick="">Sign Out</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <h1>Department List</h1>
+  <table id="department-table">
+    <tr>
+      <th>Department ID</th>
+      <th>Department Name</th>
+    </tr>
+  </table>
+  <br>
+  <form>
+    <label for="department-name">Department Name:</label>
+    <input type="text" id="department-name" name="department-name" required><br><br>
+    <input type="button" value="Add Department" onclick="addDepartment()">
+  </form>
+  <script>
+    var departmentID = 0;
+    function addDepartment() {
+      var departmentName = document.getElementById("department-name").value;
+      var newRow = document.createElement("tr");
+      var idCell = document.createElement("td");
+      var departmentNameCell = document.createElement("td");
+      idCell.innerHTML = departmentID;
+      departmentNameCell.innerHTML = departmentName;
+      newRow.appendChild(idCell);
+      newRow.appendChild(departmentNameCell);
+      document.getElementById("department-table").appendChild(newRow);
+      departmentID++;
+    }
+        function openNav() {
+          document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+        }
+      </script>
+</body>
+</html>

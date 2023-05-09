@@ -1,0 +1,161 @@
+<head>
+  <title>Employee Payroll System - Deduction List</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+#deduction-table {
+border-collapse: collapse;
+width: 100%;
+}
+#deduction-table th, #deduction-table td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+}
+#deduction-table th {
+background-color: #f2f2f2;
+}
+label {
+display: inline-block;
+width: 150px;
+text-align: right;
+margin-right: 10px;
+}
+form {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+justify-content: center;
+}
+input[type="text"]{
+background-color: #ffffff;
+padding: 12px;
+margin: 8px;
+font-size: 18px;
+}
+input[type=button] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+input[type="button"]:hover {
+    background-color: #3e8e41;
+  }
+label {
+margin: 8px;
+font-size: 18px;
+}
+table {
+border-collapse: collapse;
+width: 80%;
+margin: 0 auto;
+}
+th, td {
+border: 1px solid black;
+padding: 8px;
+text-align: center;
+}
+th {
+background-color: #f2f2f2;
+}
+</style>
+</head>
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="home.html">Home</a>
+  <a href="attendance.html">Attendance</a>
+  <a href="payroll.html">Payroll List</a>
+  <a href="employee.html">Employee List</a>
+  <a href="department.html">Department List</a>
+  <a href="deduction.html">Deduction List</a>
+  <a href="login.html" onclick="">Sign Out</a>
+</div>
+<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+      <h1>Deduction List</h1>
+      <table id="deduction-table">
+        <tr>
+          <th>Deduction ID</th>
+          <th>Deduction Name</th>
+          <th>Deduction Amount</th>
+          <th>Action</th>
+          </tr>
+          
+            </table>
+            <br>
+            <form>
+              <label for="deduction-name">Deduction Name:</label>
+              <input type="text" id="deduction-name" name="deduction-name" required><br>
+              <label for="deduction-amount">Deduction Amount:</label>
+              <input type="text" id="deduction-amount" name="deduction-amount" required><br><br>
+              <input type="button" value="Add Deduction" id="add-deduction-btn" onclick="addDeduction()">
+            </form>
+            <script>
+              var deductionID = 0;
+              function addDeduction() {
+                var deductionName = document.getElementById("deduction-name").value;
+                var deductionAmount = document.getElementById("deduction-amount").value;
+                var newRow = document.createElement("tr");
+                var idCell = document.createElement("td");
+                var nameCell = document.createElement("td");
+                var amountCell = document.createElement("td");
+                var actionCell = document.createElement("td");
+                idCell.innerHTML = deductionID;
+                nameCell.innerHTML = deductionName;
+                amountCell.innerHTML = deductionAmount;
+                actionCell.innerHTML = '<input type="button" value="Edit" onclick="editDeduction(this)"> <input type="button" value="Delete" onclick="deleteDeduction(this)">';
+newRow.appendChild(idCell);
+newRow.appendChild(nameCell);
+newRow.appendChild(amountCell);
+newRow.appendChild(actionCell);
+document.getElementById("deduction-table").appendChild(newRow);
+deductionID++;
+document.getElementById("deduction-name").value = "";
+document.getElementById("deduction-amount").value = "";
+}
+function editDeduction(obj) {
+var row = obj.parentNode.parentNode;
+var id = row.cells[0].innerHTML;
+var name = row.cells[1].innerHTML;
+var amount = row.cells[2].innerHTML;
+document.getElementById("deduction-name").value = name;
+document.getElementById("deduction-amount").value = amount;
+document.getElementById("add-deduction-btn").value = "Update";
+document.getElementById("add-deduction-btn").setAttribute("data-id", id);
+document.getElementById("add-deduction-btn").removeEventListener("click", addDeduction);
+document.getElementById("add-deduction-btn").addEventListener("click", updateDeduction);
+}
+function updateDeduction() {
+var id = this.getAttribute("data-id");
+var name = document.getElementById("deduction-name").value;
+var amount = document.getElementById("deduction-amount").value;
+var row = document.getElementById("deduction-table").rows[id];
+row.cells[1].innerHTML = name;
+row.cells[2].innerHTML = amount;
+document.getElementById("add-deduction-btn").value = "Add";
+document.getElementById("add-deduction-btn").removeAttribute("data-id");
+document.getElementById("add-deduction-btn").removeEventListener("click", updateDeduction);
+document.getElementById("add-deduction-btn").addEventListener("click", addDeduction);
+}
+function deleteDeduction(obj) {
+var row = obj.parentNode.parentNode;
+var index = row.rowIndex;
+document.getElementById("deduction-table").deleteRow(index);
+}
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+</body>

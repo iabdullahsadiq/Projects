@@ -1,0 +1,130 @@
+<head>
+    <link rel="stylesheet" href="main.css">
+    <title>Employee Payroll System - Attendance</title>
+    <style>
+      body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+table {
+border-collapse: collapse;
+width: 100%;
+}
+th, td {
+border: 1px solid #ddd;
+padding: 8px;
+text-align: left;
+}
+th {
+background-color: #f2f2f2;
+}
+input[type="submit"] {
+background-color: #4CAF50;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100%;
+}
+input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+table {
+  border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      </style>
+</head>
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="home.html">Home</a>
+  <a href="attendance.html">Attendance</a>
+  <a href="payroll.html">Payroll List</a>
+  <a href="employee.html">Employee List</a>
+  <a href="department.html">Department List</a>
+  <a href="deduction.html">Deduction List</a>
+  <a href="login.html" onclick="">Sign Out</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <h1>Employee Attendance</h1>
+    
+      <table>
+        <tr>
+          <th>Employee Name</th>
+          <th>Date</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Ahmad Mustabassir </td>
+          <td>2022-01-18</td>
+          <td>
+            <select name="ahmad-mustabassir-status">
+              <option value="present">Present</option>
+              <option value="absent">Absent</option>
+              <option value="sick">Sick</option>
+              <option value="vacation">Vacation</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Abdur Rahman</td>
+          <td>2022-01-18</td>
+          <td>
+            <select name="abdur-rahman-status">
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <option value="sick">Sick</option>
+                <option value="vacation">Vacation</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Misbah Khan</td>
+            <td>2022-01-18</td>
+            <td>
+              <select name="misbah-khan-status">
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <option value="sick">Sick</option>
+                <option value="vacation">Vacation</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Abdullah Sadiq</td>
+            <td>2022-01-18</td>
+            <td>
+              <select name="abdullah-sadiq-status">
+                <option value="present">Present</option>
+                <option value="absent">Absent</option>
+                <option value="sick">Sick</option>
+                <option value="vacation">Vacation</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <input type="submit" value="Submit Attendance" onclick="Alert()">
+<script>
+    function Alert(){
+        alert("Attendance Submitted!");
+    }
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+    </body>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Employee Payroll System - Payroll List</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    body {
+        font-family: "Lato", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  input[type=button] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  input[type=button]:hover {
+    background-color: #45a049;
+  }
+  </style>
+</head>
+<body>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="home.html">Home</a>
+  <a href="attendance.html">Attendance</a>
+  <a href="payroll.html">Payroll List</a>
+  <a href="employee.html">Employee List</a>
+  <a href="department.html">Department List</a>
+  <a href="deduction.html">Deduction List</a>
+  <a href="login.html" onclick="">Sign Out</a>
+  </div>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  <h1>Payroll List</h1>
+  <table>
+    <tr>
+      <th>Employee Name</th>
+      <th>Base Salary</th>
+      <th>Deductions</th>
+      <th>Total Payroll</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" id="employee-name" name="employee-name" required>
+      </td>
+      <td>
+        <input type="text" id="base salary" name="base salary" required>
+      </td>
+      <td>
+        <input type="text" id="deductions" name="deductions" required>
+      </td>
+      <td id="total-payroll"></td>
+    </tr>
+  </table>
+  <input type="button" value="Calculate" onclick="calculatePayroll()">
+  <input type="button" value="Print" onclick="printPage()">
+  <script>
+    function calculatePayroll() {
+      var allowance = document.getElementById("base salary").value;
+      var deductions = document.getElementById("deductions").value;
+      var totalPayroll = parseFloat(allowance) - parseFloat(deductions);
+      document.getElementById("total-payroll").innerHTML = totalPayroll;
+    }
+    function printPage() {
+      window.print();
+    }
+  </script>
+<script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+</body>
+</html>
